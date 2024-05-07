@@ -1,0 +1,211 @@
+<!doctype html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/eb20186e5c.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="select-none">
+    <header>
+      <nav class="bg-[#000000]">
+        <div
+          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img class="max-h-14" src="/images/webeyes.png"
+              alt="Webeyes Logo" />
+          </a>
+          <button data-collapse-toggle="navbar-dropdown" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-dropdown" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul
+              class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black bg-[#000000] dark:border-gray-700">
+              <li class="py-1">
+                <a href="#home"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home
+                </a>
+              </li>
+              <li class="py-1">
+                <a href="#about-us"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About
+                  Us</a>
+              </li>
+              <li class="py-1">
+                <a href="#services"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Our
+                  Services</a>
+              </li>
+              <li class="py-1">
+                <a href="#setup"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Setup</a>
+              </li>
+              <li>
+                <a href="./register.html">
+                  <button type="button" class="text-white bg-transparent border-2 border-blue-500 hover:bg-white/10 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-[5px] text-center">Register</button>
+                </a>
+              </li>
+              <li>
+                <a href="./login.html">
+                  <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center">Login</button>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <article>
+      <section id="home" class="grid grid-cols-1 md:grid-cols-12">
+        <div class="max-h-[630px] col-start-2 col-end-7 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-screen">
+          <p class="text-7xl font-bold pb-4 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-transparent bg-clip-text">Your fully monitored hosting platform!</p>
+          <p class="text-4xl">WebEyes specializes in making monitoring as easy as possible, as well as making the setup of you applications seamless!</p>
+        </div>
+        <div class="max-h-[630px] col-start-7 col-end-12 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-screen">
+          <img class="max-h-[600px]" src="/images/datacenter.jpg" alt="">
+        </div>
+      </section>
+      <section id="about-us">
+        <div class="text-center">
+          <p class="text-7xl font-bold">About us</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <div class="max-h-[600px] col-start-2 col-end-7 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-screen">
+            <img class="max-h-[600px]" src="/images/user.jpg" alt="">
+          </div>
+          <div class="max-h-[600px] col-start-7 col-end-12 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-screen">
+            <p class="text-4xl">With the vision of creating the perfect hosting platform, we set out to build a platform that prioritizes performance, reliability, and user experience above all else. Our goal was to create a hosting solution that would empower businesses and individuals alike.</p>
+          </div>
+      </div>
+      </section>
+      <section id="services">
+        <div class="text-center">
+          <p class="text-7xl pb-12 font-bold">Our services</p>
+        </div>
+        <div class="max-w-[80%] flex items-center justify-center grid grid-cols-1 md:grid-cols-4 gap-4 mx-auto">
+        <div>    
+<a class="block h-[360px] max-w-sm p-6 bg-gray-300 hover:bg-gray-400/[.33] rounded-lg shadow">
+  <p class="pb-2"><i class="fa-solid fa-bolt fa-2xl"></i></p>
+  <h5 class="mb-2 text-2xl font-bold tracking-tight ">Performance</h5>
+  <p class="font-normal">Optimize your system's performance and efficiency with our advanced analytics tools. Delve deep into your system's architecture to identify bottlenecks, fine-tune processes, and streamline operations for maximum productivity and enhanced user experience.</p>
+  </a>
+        </div>
+<div class="mb-6">
+  <a class="block h-[360px] max-w-sm p-6 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 hover:bg-gradient-to-br rounded-lg shadow">
+    <p class="pb-2 text-white"><i class="fa-solid fa-chart-simple fa-2xl"></i></p>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Monitoring</h5>
+    <p class="font-normal text-white dark:text-white">Discover real-time monitoring solutions tailored to keep a vigilant eye on your system's health and performance. Our comprehensive suite of tools provides deep insights into your system's current state, ensuring proactive management and rapid troubleshooting to maintain uninterrupted operations.</p>
+    </a>
+          </div>
+        <div>      
+<a class="block h-[360px] max-w-sm p-6 bg-gray-300 hover:bg-gray-400/[.33] rounded-lg shadow">
+  <p class="pb-2"><i class="fa-solid fa-upload fa-2xl"></i></p>
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Easy setup</h5>
+  <p class="font-normal">Experience a hassle-free setup process designed to streamline deployment and minimize downtime. Our intuitive interfaces and user-friendly configurations empower you to focus on your core objectives with confidence and ease.</p>
+  </a>
+        </div>
+        <div>      
+<a class="block h-[360px] max-w-sm p-6 bg-gray-300 hover:bg-gray-400/[.33] rounded-lg shadow">
+  <p class="pb-2"><i class="fa-solid fa-money-bill fa-2xl"></i></p>
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Low cost</h5>
+  <p class="font-normal">Maximize value with our high-quality solutions at an affordable price point. Prioritize affordability without sacrificing functionality, ensuring you can effectively manage and optimize your system without breaking the bank.</p>
+  </a>
+        </div>
+      </div>
+      </section>
+      <section id="setup" class="pt-10">
+        <div class="text-center">
+          <p class="text-7xl font-bold">Setup</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <div class="max-h-[340px] col-start-2 col-end-7 max-w-screen-xl mx-auto flex flex-col items-center justify-center h-screen">
+            <p class="text-3xl">With our intuitive setup process, your application will be online in no time. Create an account and experience our easy-to-use dashboard. With a few clicks, your application will be up and running!</p>
+          </div>
+          <div class="m-12 w-full col-start-7 col-end-12 text-center bg-white border border-gray-200 rounded-lg shadow p-8 dark:bg-gray-300">
+            <h5 class="mb-2 text-3xl font-bold text-black">Experience it yourself!</h5>
+            <p class="mb-5 text-base sm:text-lg text-gray-500">With our quick registriation process, you'll be up and running in no time!</p>
+            <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+              <a href="./register.html">
+                <button type="button" class="animate-bounce text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Sign up now!</button>
+              </a>
+              </div>
+        </div>
+      </div>
+      </section>
+    </article>
+    <footer class="bg-[#000000]">
+      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="flex items-center">
+              <img src="/images/webeyes.png"
+                class="max-h-20 me-3" alt="Webeyes Logo" />
+            </a>
+            <p class="text-white">Keeping an eye on your resources!</p>
+            <p class="text-white pt-2">Made with 💙 by CCS students!</p>
+          </div>
+          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div></div>
+            <div>
+              <h2
+                class="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">Menu</h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-1">
+                  <a href="#home"
+                    class="hover:underline ">Home</a>
+                </li>
+                <li class="mb-1">
+                  <a href="#about-us"
+                    class="hover:underline">About Us</a>
+                </li>
+                <li class="mb-1">
+                  <a href="#services"
+                    class="hover:underline">Our Services</a>
+                </li>
+                <li class="mb-1">
+                  <a href="#setup"
+                    class="hover:underline">Setup</a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="hover:underline">Login</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2
+                class="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-1">
+                  <a href="#" class="hover:underline">Terms & Conditions</a>
+                </li>
+                <li class="mb-1">
+                  <a href="#" class="hover:underline">Cookies</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Privacy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>

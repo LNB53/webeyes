@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+
+  api:
+    image: <your-api-image>:<tag>
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: login_database
+      MYSQL_USER: administrator
+      MYSQL_PASSWORD: administrator
+    ports:
+      - "3306:3306"
+    depends_on:
+      - api

@@ -1,0 +1,27 @@
+# Use a base image with nginx and MySQL installed
+FROM nginx:latest
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Remove default nginx welcome page
+RUN rm -rf /usr/share/nginx/html
+
+# Clone the webpage files from GitHub
+WORKDIR /tmp
+RUN git clone https://github.com/AleksanderBaum/frontend-hosting.git
+
+# Move files to nginx directory
+RUN mv /tmp/frontend-hosting/resources/* /usr/share/nginx/
+
+# Clean up
+RUN rm -rf /tmp/frontend-hosting
+
+# Expose ports
+EXPOSE 80
+
+# Start services
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
