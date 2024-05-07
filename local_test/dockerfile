@@ -9,13 +9,13 @@ RUN rm -rf /usr/share/nginx/html
 
 # Clone the webpage files from GitHub
 WORKDIR /tmp
-RUN git clone https://github.com/AleksanderBaum/frontend-hosting.git
+RUN git clone https://github.com/QuintenVdW/Project_hosting.git
 
 # Move files to nginx directory
-RUN mv /tmp/frontend-hosting/resources/* /usr/share/nginx/
+RUN mv /tmp/Project_hosting/resources/* /usr/share/nginx/
 
 # Clean up
-RUN rm -rf /tmp/frontend-hosting
+RUN rm -rf /tmp/Project_hosting
 
 # Expose ports
 EXPOSE 80
