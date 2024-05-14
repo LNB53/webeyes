@@ -1,0 +1,6 @@
+# Dockerfile.api
+FROM quintenvdw/quintenvdw_api:latest
+COPY . /app
+WORKDIR /app
+RUN <your-build-commands>
+CMD ["<your-start-command>"]

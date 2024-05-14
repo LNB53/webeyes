@@ -9,14 +9,18 @@ services:
       - "80:80"
 
   api:
-    image: <your-api-image>:<tag>
+    build:
+      context: .
+      dockerfile: Dockerfile.api
     ports:
       - "8080:8080"
     depends_on:
       - mysql
 
   mysql:
-    image: mysql:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: login_database
@@ -24,5 +28,3 @@ services:
       MYSQL_PASSWORD: administrator
     ports:
       - "3306:3306"
-    depends_on:
-      - api
