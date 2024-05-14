@@ -1,4 +1,4 @@
-# Use a base image with nginx and MySQL installed
+# dockerfile.nginx
 FROM nginx:latest
 
 # Install git
