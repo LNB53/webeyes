@@ -4,27 +4,34 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: Dockerfile.nginx
+      dockerfile: dockerfile.nginx
     ports:
       - "80:80"
-
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile.api
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
 
   mysql:
     build:
       context: .
-      dockerfile: Dockerfile.mysql
+      dockerfile: dockerfile.sql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: login_database
       MYSQL_USER: administrator
       MYSQL_PASSWORD: administrator
     ports:
-      - "3306:3306"
+      - "3307:3306"
+
+  api:
+    build:
+      context: .
+      dockerfile: dockerfile.api
+    ports:
+      - "8080:8080"
+    env_file:
+      - AUTH0.env
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
+networks:
+  backend:
