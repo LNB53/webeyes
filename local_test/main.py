@@ -12,4 +12,8 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type"],
 )
 
-# Define your API endpoints and OAuth authentication here
+
+# Test endpoint
+@app.get("/")
+def read_root():
+    return {"message": "API is running!"}
