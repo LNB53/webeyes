@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/eb20186e5c.js" crossorigin="anonymous"></script>
+    <title>WebEyes - Monitoring</title>
+</head>
+<body>
+    <header>
+        <nav class="bg-[#000000]">
+          <div
+            class="flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+              <img class="max-h-14" src="./images/webeyes.png"
+                alt="Webeyes Logo" />
+            </a>
+            <button data-collapse-toggle="navbar-dropdown" type="button"
+              class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="navbar-dropdown" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="2"
+                  d="M1 1h15M1 7h15M1 13h15" />
+              </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+              <ul
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black bg-[#000000] dark:border-gray-700">
+                <li>
+                  <a href="/resources/html/index.html">
+                    <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center">Log Out</button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="grid grid-cols-6">
+      <article class="col-start-1 col-end-1">
+        <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
+            <div class="overflow-y-auto py-5 px-3 h-[625px] bg-[#000000]">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/resources/html/dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <i class="fa-brands fa-docker"></i>
+                            <span class="ml-3">Applications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
+                <a href="#" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
+                  <h1><i class="fa-solid fa-ticket"></i> Contact</h1>
+                </a>
+            </div>
+          </aside>
+      </article>
+      <article class="col-start-2 col-end-4">
+        <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+        <div class="px-4 lg:px-12">
+            <div class="py-10 h-[585px]">
+                <div class="bg-white">
+                    <img src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
+                </div>
+                <div class="pt-10">
+                    <img src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<article class="col-start-4 col-end-7">
+    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+    <div class="py-10 h-[585px]">
+        <div>
+            <img class="max-h-64" src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
+        </div>
+        <div class="pt-10">
+            <img class="max-h-64" src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
+        </div>
+    </div>
+</section>
+</article>
+</body>
+</html>
