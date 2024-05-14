@@ -26,12 +26,8 @@ services:
       dockerfile: dockerfile.api
     ports:
       - "8080:8080"
-    env_file:
-      - AUTH0.env
     depends_on:
       - mysql
-    networks:
-      - backend
 
 networks:
   backend:
