@@ -1,129 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/tailwind.css" rel="stylesheet">
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-      rel="stylesheet" />
-      <link rel="icon" type="image/x-icon" href="../html/images/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../html/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/eb20186e5c.js" crossorigin="anonymous"></script>
     <title>WebEyes - Account</title>
 </head>
+
 <body>
     <header>
-    <nav class="bg-[#000000]">
-      <div
-        class="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img class="max-h-14" src="./images/webeyes.png"
-            alt="Webeyes Logo" />
-        </a>
-        <button data-collapse-toggle="navbar-dropdown" type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-dropdown" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15" />
-          </svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-          <ul
-            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black bg-[#000000] dark:border-gray-700">
-            <li>
-              <a href="index.html">
-                <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center">Log Out</button>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <div class="grid grid-cols-6">
-    <article class="col-start-1 col-end-1">
-      <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
-          <div class="overflow-y-auto py-5 px-3 h-[625px] bg-[#000000]">
-              <ul class="space-y-2">
-                  <li>
-                      <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                          <i class="fa-brands fa-docker"></i>
-                          <span class="ml-3">Applications</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="account.html">
-                      <button type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                          <i class="fa-solid fa-user"></i>
-                          <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
-                      </button>
-                  </a>
-                  </li>
-              </ul>
-          </div>
-          <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
-              <a href="contact.html" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
-                <h1><i class="fa-solid fa-ticket"></i> Contact</h1>
-              </a>
-          </div>
-        </aside>
-    </article>
-    <article class="col-start-2 col-end-7">
-      <section class="h-[625px] text-white bg-gray-900 p-3 sm:p-5 antialiased">
-        <div class="rounded-xl bg-gray-800 sm:px-8 sm:shadow">
-            <div class="pt-4">
-              <h1 class="py-2 text-2xl font-semibold">Account settings</h1>
+        <nav class="bg-[#000000]">
+            <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img class="max-h-14" src="./images/webeyes.png" alt="Webeyes Logo" />
+                </a>
+                <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+                    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black bg-[#000000] dark:border-gray-700">
+                        <li>
+                            <a href="index.html">
+                                <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center">Log Out</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <hr class="mt-4 mb-2" />
-            <p class="py-2 text-xl font-semibold">Email Address</p>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <p class="text-gray-600">Your email address is <strong>john.doe@company.com</strong></p>
-              <button class="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">Change</button>
-            </div>
-            <hr class="mt-4 mb-2" />
-            <p class="py-2 text-xl font-semibold">Password</p>
-            <div class="flex items-center">
-              <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-3">
-                <label for="login-password">
-                  <span class="text-sm text-gray-500">Current Password</span>
-                  <div class="relative flex overflow-hidden rounded-md border-2 transition focus-within:border-blue-600">
-                    <input type="password" id="login-password" class="w-full flex-shrink appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="***********" />
-                  </div>
-                </label>
-                <label for="new-password">
-                  <span class="text-sm text-gray-500">New Password</span>
-                  <div class="relative flex overflow-hidden rounded-md border-2 transition focus-within:border-blue-600">
-                    <input type="password" id="new-password" class="w-full flex-shrink appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="***********" />
-                  </div>
-                </label>  
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="mt-5 ml-2 h-6 w-6 cursor-pointer text-sm font-semibold text-gray-600 underline decoration-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-              </svg>
-            </div>
-            <p class="mt-2">Can't remember your current password. <a class="text-sm font-semibold text-blue-600 underline decoration-2" href="#">Recover Account</a></p>
-            <button class="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white">Save Password</button>
-            <hr class="mt-4 mb-2" />
-      
-            <div class="mb-10">
-              <p class="py-2 text-xl font-semibold">Delete Account</p>
-              <p class="inline-flex items-center rounded-full bg-rose-100 px-4 py-1 text-rose-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                </svg>
-                Proceed with caution
-              </p>
-              <p class="mt-2">Make sure you have taken backup of your account in case you ever need to get access to your data. We will completely wipe your data. There is no way to access your account after this action.</p>
-              <button class="ml-auto mb-8 text-sm font-semibold text-rose-600 underline decoration-2">Continue with deletion</button>
-            </div>
-          </div>
-  </section>
-</div>
+        </nav>
+    </header>
+    <div class="grid grid-cols-6">
+        <article class="col-start-1 col-end-1">
+            <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
+                <div class="overflow-y-auto py-5 px-3 h-[625px] bg-[#000000]">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <i class="fa-brands fa-docker"></i>
+                                <span class="ml-3">Applications</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account.html">
+                                <button type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
+                    <a href="contact.html" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <h1><i class="fa-solid fa-ticket"></i> Contact</h1>
+                    </a>
+                </div>
+            </aside>
+        </article>
+        <article class="col-start-2 col-end-7">
+            <section class="h-[625px] text-white bg-gray-900 p-3 sm:p-5 antialiased">
+                <div class="rounded-xl bg-gray-800 sm:px-8 sm:shadow">
+                    <div class="pt-4">
+                        <h1 class="py-2 text-2xl font-semibold">Account settings</h1>
+                    </div>
+                    <hr class="mt-4 mb-2" />
+                    <p class="py-2 text-xl font-semibold">Email Address</p>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <p class="text-gray-600">Your email address is <strong>john.doe@company.com</strong></p>
+                        <button class="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">Change</button>
+                    </div>
+                    <hr class="mt-4 mb-2" />
+                    <p class="py-2 text-xl font-semibold">Password</p>
+                    <div class="flex items-center">
+                        <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-3">
+                            <label for="login-password">
+                                <span class="text-sm text-gray-500">Current Password</span>
+                                <div class="relative flex overflow-hidden rounded-md border-2 transition focus-within:border-blue-600">
+                                    <input type="password" id="login-password" class="w-full flex-shrink appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="***********" />
+                                </div>
+                            </label>
+                            <label for="new-password">
+                                <span class="text-sm text-gray-500">New Password</span>
+                                <div class="relative flex overflow-hidden rounded-md border-2 transition focus-within:border-blue-600">
+                                    <input type="password" id="new-password" class="w-full flex-shrink appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="***********" />
+                                </div>
+                            </label>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-5 ml-2 h-6 w-6 cursor-pointer text-sm font-semibold text-gray-600 underline decoration-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                        </svg>
+                    </div>
+                    <p class="mt-2">Can't remember your current password. <a class="text-sm font-semibold text-blue-600 underline decoration-2" href="#">Recover Account</a></p>
+                    <button class="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white">Save Password</button>
+                    <hr class="mt-4 mb-2" />
+
+                    <div class="mb-10">
+                        <p class="py-2 text-xl font-semibold">Delete Account</p>
+                        <p class="inline-flex items-center rounded-full bg-rose-100 px-4 py-1 text-rose-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            Proceed with caution
+                        </p>
+                        <p class="mt-2">Make sure you have taken backup of your account in case you ever need to get access to your data. We will completely wipe your data. There is no way to access your account after this action.</p>
+                        <button class="ml-auto mb-8 text-sm font-semibold text-rose-600 underline decoration-2">Continue with deletion</button>
+                    </div>
+                </div>
+            </section>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </body>
+
 </html>

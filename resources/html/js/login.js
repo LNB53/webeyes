@@ -1,4 +1,4 @@
-document.getElementById('loginform').addEventListener('submit', async function(event) {
+document.getElementById('loginform').addEventListener('submit', async function (event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -9,7 +9,10 @@ document.getElementById('loginform').addEventListener('submit', async function(e
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ mail: email, password: password })
+            body: JSON.stringify({
+                mail: email,
+                password: password
+            })
         });
 
         if (response.ok) {
