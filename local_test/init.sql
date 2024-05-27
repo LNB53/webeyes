@@ -5,7 +5,7 @@ create table login_database.users
 (
     id INT AUTO_INCREMENT PRIMARY KEY,
     mail VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL
+    password VARCHAR(128) NOT NULL
 );
 
 insert into login_database.users (mail,password) values('QuintenVdW@example.com','Admin123');
