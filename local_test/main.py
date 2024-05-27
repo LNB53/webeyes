@@ -75,3 +75,25 @@ def register_user(user: User):
     except Error as e:
         print(f"Error registering user: {e}")
         raise HTTPException(status_code=500, detail=f"Error registering user: {e}")
+    
+# Endpoint to handle login
+@app.post("/login")
+def login_user(user: User):
+    connection = get_db_connection()
+    if connection is None:
+        raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
+    try:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM users WHERE mail = %s AND password = %s", (user.mail, user.password))
+        matched_user = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if matched_user:
+            return {"message": "Login successful!", "user": matched_user}
+        else:
+            raise HTTPException(status_code=401, detail="Invalid email or password")
+    except Error as e:
+        print(f"Error during login: {e}")
+        raise HTTPException(status_code=500, detail="Error during login")
