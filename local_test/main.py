@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
 from mysql.connector import Error
+import hashlib  # Import hashlib for password hashing
 
 app = FastAPI()
 
@@ -40,24 +41,6 @@ def get_db_connection():
 def read_root():
     return {"message": "API is running!"}
 
-# Endpoint to test database connection and retrieve users
-@app.get("/users")
-def get_users():
-    connection = get_db_connection()
-    if connection is None:
-        raise HTTPException(status_code=500, detail="Failed to connect to the database")
-
-    try:
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM users")
-        users = cursor.fetchall()
-        cursor.close()
-        connection.close()
-        return users
-    except Error as e:
-        print(f"Error fetching users: {e}")
-        raise HTTPException(status_code=500, detail="Error fetching users from the database")
-
 # Endpoint to register a new user
 @app.post("/register")
 def register_user(user: User):
@@ -85,13 +68,20 @@ def login_user(user: User):
 
     try:
         cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM users WHERE mail = %s AND password = %s", (user.mail, user.password))
+        
+        # Fetch user by email from the database
+        cursor.execute("SELECT * FROM users WHERE mail = %s", (user.mail,))
         matched_user = cursor.fetchone()
-        cursor.close()
-        connection.close()
 
         if matched_user:
-            return {"message": "Login successful!", "user": matched_user}
+            # Check if the hashed password matches the provided password
+            hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
+            if matched_user['password'] == hashed_password:
+                cursor.close()
+                connection.close()
+                return {"message": "Login successful!", "user": matched_user}
+            else:
+                raise HTTPException(status_code=401, detail="Invalid email or password")
         else:
             raise HTTPException(status_code=401, detail="Invalid email or password")
     except Error as e:
