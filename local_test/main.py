@@ -74,4 +74,4 @@ def register_user(user: User):
         return {"message": "User registered successfully"}
     except Error as e:
         print(f"Error registering user: {e}")
-        raise HTTPException(status_code=500, detail="Error registering user")
+        raise HTTPException(status_code=500, detail=f"Error registering user: {e}")
