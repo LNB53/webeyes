@@ -60,6 +60,7 @@
           const email = document.getElementById('email').value;
           const password = document.getElementById('password').value;
           const confirmPassword = document.getElementById('confirm-password').value;
+          document.getElementById('registerForm').reset();
 
           if (password !== confirmPassword) {
               alert("Passwords do not match!");
