@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
+document.getElementById('loginform').addEventListener('submit', async function (event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -9,13 +9,16 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ mail: email, password: password })
+            body: JSON.stringify({
+                mail: email,
+                password: password
+            })
         });
 
         if (response.ok) {
             const userData = await response.json();
             // Store user data in browser
-            localStorage.setItem('user', JSON.stringify(userData.user));
+            localStorage.setItem('user', JSON.stringify(userData.user.mail));
             window.location.href = "dashboard.html"; // Redirect to dashboard
         } else {
             const errorData = await response.json();
