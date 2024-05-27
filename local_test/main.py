@@ -1,5 +1,6 @@
 # main.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
 from mysql.connector import Error
@@ -14,6 +15,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# form format for API handling from webpage form
+class User(BaseModel):
+    mail: str
+    password: str
 
 # Database connection
 def get_db_connection():
@@ -75,4 +81,22 @@ def register_user(user):
         return {"message": "User registered successfully"}
     except Error as e:
         print(f"Error inserting user: {e}")
+        raise HTTPException(status_code=500, detail="Error registering user")
+    
+
+@app.post("/register")
+def register_user(user: User):
+    connection = get_db_connection()
+    if connection is None:
+        raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
+    try:
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO users (mail, password) VALUES (%s, %s)", (user.mail, user.password))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return {"message": "User registered successfully"}
+    except Error as e:
+        print(f"Error registering user: {e}")
         raise HTTPException(status_code=500, detail="Error registering user")
