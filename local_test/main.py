@@ -41,24 +41,6 @@ def get_db_connection():
 def read_root():
     return {"message": "API is running!"}
 
-# Endpoint to test database connection and retrieve users
-@app.get("/users")
-def get_users():
-    connection = get_db_connection()
-    if connection is None:
-        raise HTTPException(status_code=500, detail="Failed to connect to the database")
-
-    try:
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM users")
-        users = cursor.fetchall()
-        cursor.close()
-        connection.close()
-        return users
-    except Error as e:
-        print(f"Error fetching users: {e}")
-        raise HTTPException(status_code=500, detail="Error fetching users from the database")
-
 # Endpoint to register a new user
 @app.post("/register")
 def register_user(user: User):
