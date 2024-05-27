@@ -14,10 +14,10 @@
   </head>
   <body>
     <section class="bg-gray-900">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="/resources/html/index.html" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img class="max-h-14" src="images/webeyes.png" alt="logo">  
-            </a>
+      <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <a href="index.html" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          <img class="max-h-14" src="images/webeyes.png" alt="logo">  
+        </a>
 
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -55,34 +55,6 @@
         </div>
       </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script>
-      document.getElementById('registerForm').addEventListener('submit', async function(event) {
-          event.preventDefault();
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          const confirmPassword = document.getElementById('confirm-password').value;
-          document.getElementById('registerForm').reset();
-
-          if (password !== confirmPassword) {
-              alert("Passwords do not match!");
-              return;
-          }
-
-          const response = await fetch('http://localhost:8080/register', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ mail: email, password: password })
-          });
-
-          if (response.ok) {
-              alert("User registered successfully!");
-          } else {
-              const errorData = await response.json();
-              alert(`Error: ${errorData.detail}`);
-          }
-      });
-  </script>
-</body>
+    <script src="js/register.js"></script>
+  </body>
 </html>
