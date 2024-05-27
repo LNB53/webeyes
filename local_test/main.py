@@ -1,3 +1,4 @@
+# main.py
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
@@ -50,3 +51,28 @@ def get_users():
     except Error as e:
         print(f"Error fetching users: {e}")
         raise HTTPException(status_code=500, detail="Error fetching users from the database")
+
+# Endpoint to register a new user
+@app.post("/register")
+def register_user(user):
+    if user.password != user.confirm_password:
+        raise HTTPException(status_code=400, detail="Passwords do not match")
+    
+    connection = get_db_connection()
+    if connection is None:
+        raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
+    try:
+        cursor = connection.cursor()
+        hashed_password = sha256(user.password.encode('utf-8')).hexdigest()
+        cursor.execute(
+            "INSERT INTO users (mail, password) VALUES (%s, %s)",
+            (user.email, user.confirm_password)
+        )
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return {"message": "User registered successfully"}
+    except Error as e:
+        print(f"Error inserting user: {e}")
+        raise HTTPException(status_code=500, detail="Error registering user")

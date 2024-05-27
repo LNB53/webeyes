@@ -14,11 +14,6 @@ services:
     build:
       context: .
       dockerfile: dockerfile.sql
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: login_database
-      MYSQL_USER: administrator
-      MYSQL_PASSWORD: administrator
     ports:
       - "3307:3306"
     networks:

@@ -1,10 +1,11 @@
 -- init.sql
-CREATE TABLE IF NOT EXISTS users (
+drop schema if exists login_database;
+create schema login_database;
+create table login_database.users
+(
     id INT AUTO_INCREMENT PRIMARY KEY,
     mail VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );
 
-INSERT INTO users (mail, password)
-VALUES ('QuintenVdW@example.com', 'Admin123')
-ON DUPLICATE KEY UPDATE mail='QuintenVdW@example.com';
+insert into login_database.users (mail,password) values('QuintenVdW@example.com','Admin123');
