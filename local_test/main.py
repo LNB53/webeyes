@@ -79,7 +79,7 @@ def login_user(user: User):
         if matched_user:
             # Hash the provided password and compare it to the stored hashed password
             hashed_password = hash_password(user.password)
-            if matched_user['password'] == user.password:
+            if matched_user['password'] == hashed_password:
                 cursor.close()
                 connection.close()
                 return {"message": "Login successful!", "user": matched_user}
