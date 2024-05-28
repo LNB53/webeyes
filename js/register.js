@@ -10,25 +10,19 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         return;
     }
     
-    // Function to hash the password using CryptoJS
-    function hashPassword(password) {
-        return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex);
-    }
-    
-    const hashedPassword = hashPassword(password);
-    
     try {
         const response = await fetch('http://10.0.0.124:8080/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ mail: email, password: hashedPassword })
+            body: JSON.stringify({ mail: email, password: password })
         });
         
         if (response.ok) {
             alert("User registered successfully!");
             document.getElementById('registerForm').reset(); // Reset the form after successful registration
+            window.location.href = "login.html"; // Redirect to login page
         } else {
             const errorData = await response.json();
             alert(`Error: ${errorData.detail}`);

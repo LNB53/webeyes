@@ -1,4 +1,3 @@
-# main.py
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# form format for API handling from webpage form
+# Form format for API handling from webpage form
 class User(BaseModel):
     mail: str
     password: str
@@ -50,7 +49,9 @@ def register_user(user: User):
 
     try:
         cursor = connection.cursor()
-        cursor.execute("INSERT INTO users (mail, password) VALUES (%s, %s)", (user.mail, user.password))
+        # Hash the password before storing it in the database
+        hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
+        cursor.execute("INSERT INTO users (mail, password) VALUES (%s, %s)", (user.mail, hashed_password))
         connection.commit()
         cursor.close()
         connection.close()
@@ -68,13 +69,12 @@ def login_user(user: User):
 
     try:
         cursor = connection.cursor(dictionary=True)
-        
         # Fetch user by email from the database
         cursor.execute("SELECT * FROM users WHERE mail = %s", (user.mail,))
         matched_user = cursor.fetchone()
 
         if matched_user:
-            # Check if the hashed password matches the provided password
+            # Hash the provided password and compare it to the stored hashed password
             hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
             if matched_user['password'] == hashed_password:
                 cursor.close()

@@ -1,8 +1,14 @@
 document.getElementById('loginform').addEventListener('submit', async function (event) {
     event.preventDefault();
+    
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
+    
+    if (password.length < 6) {
+        alert("Password should be at least 6 characters long.");
+        return;
+    }
+    
     try {
         const response = await fetch('http://10.0.0.124:8080/login', {
             method: 'POST',
@@ -25,6 +31,7 @@ document.getElementById('loginform').addEventListener('submit', async function (
             alert(`Error: ${errorData.detail}`);
         }
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        console.error('Error during login:', error);
+        alert('An error occurred during login. Please try again.');
     }
 });
