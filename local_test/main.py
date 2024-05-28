@@ -50,7 +50,6 @@ def register_user(user: User):
     connection = get_db_connection()
     if connection is None:
         raise HTTPException(status_code=500, detail="Failed to connect to the database")
-
     try:
         cursor = connection.cursor()
         # Hash the password before storing it in the database
@@ -80,7 +79,7 @@ def login_user(user: User):
         if matched_user:
             # Hash the provided password and compare it to the stored hashed password
             hashed_password = hash_password(user.password)
-            if matched_user['password'] == hashed_password:
+            if matched_user['password'] == user.password:
                 cursor.close()
                 connection.close()
                 return {"message": "Login successful!", "user": matched_user}
