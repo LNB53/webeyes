@@ -33,7 +33,7 @@ class User(BaseModel):
 def get_db_connection():
     try:
         connection = mysql.connector.connect(
-            host="10.0.0.243",
+            host="localhost",
             user="administrator",
             password="administrator",
             database="login_database"
