@@ -4,11 +4,6 @@ document.getElementById('loginform').addEventListener('submit', async function (
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    if (password.length < 6) {
-        alert("Password should be at least 6 characters long.");
-        return;
-    }
-    
     try {
         const response = await fetch('http://10.0.0.124:8080/login', {
             method: 'POST',

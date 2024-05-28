@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
 from mysql.connector import Error
-import hashlib  # Import hashlib for password hashing
+import hashlib
 
 app = FastAPI()
 
@@ -35,6 +35,10 @@ def get_db_connection():
         print(f"Error connecting to MySQL: {e}")
         return None
 
+# Helper function to hash passwords
+def hash_password(password: str) -> str:
+    return hashlib.sha512(password.encode()).hexdigest()
+
 # Test endpoint
 @app.get("/")
 def read_root():
@@ -50,7 +54,7 @@ def register_user(user: User):
     try:
         cursor = connection.cursor()
         # Hash the password before storing it in the database
-        hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
+        hashed_password = hash_password(user.password)
         cursor.execute("INSERT INTO users (mail, password) VALUES (%s, %s)", (user.mail, hashed_password))
         connection.commit()
         cursor.close()
@@ -75,7 +79,7 @@ def login_user(user: User):
 
         if matched_user:
             # Hash the provided password and compare it to the stored hashed password
-            hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
+            hashed_password = hash_password(user.password)
             if matched_user['password'] == hashed_password:
                 cursor.close()
                 connection.close()
