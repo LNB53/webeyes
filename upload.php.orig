@@ -1,19 +1,12 @@
-<?php
+$<?php
 // FTP server settings
 $ftp_server = "10.0.0.204"; // FTP server IP address
 $ftp_username = "ftpserver"; // FTP username
 $ftp_password = "ITF"; // FTP password
 $ftp_dir = "/home/ftpserver/userfiles"; // Directory on FTP server to upload files
 
-// Check if file has been uploaded and appname is set
-if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"])) {
-    $appname = $_POST["appname"];
-    
-    // Validate appname
-    if (!preg_match('/^[a-z0-9]+$/', $appname)) {
-        die("Invalid application name. Only lowercase letters and numbers are allowed, with no spaces.");
-    }
-
+// Check if file has been uploaded
+if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK) {
     // Connect to FTP server
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
@@ -36,23 +29,23 @@ if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"
 
     // Upload file to FTP server
     $file_tmp = $_FILES["dropzone-file"]["tmp_name"];
-    $file_extension = pathinfo($_FILES["dropzone-file"]["name"], PATHINFO_EXTENSION);
-    $file_name = $appname . '.' . $file_extension;
-
+    $file_name = basename($_FILES["dropzone-file"]["name"]);
     if (!ftp_put($conn_id, $file_name, $file_tmp, FTP_BINARY)) {
         die("Failed to upload file to FTP server");
     }
     echo "Uploaded file to FTP server successfully.\n"; // Debug statement
-    
+
     // Close FTP connection
     ftp_close($conn_id);
     echo "Closed FTP connection.\n"; // Debug statement
 
-    // Redirect back to the form with success parameter
-    header("Location: dashboard.html?s=T");
+    // Redirect back to the form with success message
+    header("Location: index.html?upload_success=true");
     exit;
 } else {
     // Handle file upload error
-    die("File upload failed");
+    var_dump($_FILES["dropzone-file"]);
+    die();
 }
 ?>
+
