@@ -4,9 +4,7 @@ document.getElementById('loginform').addEventListener('submit', async function (
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    try {
-        // http://10.0.0.124:8080
-        const response = await fetch('http://127.0.0.1/login', {
+    const response = await fetch('http://10.0.0.124:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,8 +25,4 @@ document.getElementById('loginform').addEventListener('submit', async function (
             const errorData = await response.json();
             alert(`Error: ${errorData.detail}`);
         }
-    } catch (error) {
-        console.error('Error during login:', error);
-        alert('An error occurred during login. Please try again.');
-    }
 });
