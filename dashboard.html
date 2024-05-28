@@ -226,7 +226,7 @@
                             <div class="flex flex-col justify-center">
                                 <div class="px-10 pt-10">
                                     <label for="appname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Application name:</label>
-                                    <input type="text" id="appname" name="appname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Name of application" required>
+                                    <input type="text" id="appname" name="appname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Name of application" required pattern="[a-z0-9]+" title="Lowercase letters and numbers only, no spaces." required>
                                 </div>
                                 <div class="p-10 flex items-center justify-center w-full">
                                     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -236,15 +236,15 @@
                                             </svg>
                                             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                             <p class="text-xs text-gray-500 dark:text-gray-400">ONLY .zip or .rar</p>
-                                            <br>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 pb-3">Max upload size 150MB</p>
                                             <div class="px-10 pb-4">
-                                                <div id="file-name-container" class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                                                <div id="file-name-container" class="flex items-center space-x-2 text-sm text-gray-500 dark:text-white">
                                                     <p id="file-name"></p>
                                                     <button type="button" id="remove-file-btn" class="hidden text-red-500" onclick="removeFile()">x</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="file" id="dropzone-file" name="dropzone-file" accept=".zip,.rar" required onchange="updateFileName()" />
+                                        <input class="hidden" type="file" id="dropzone-file" name="dropzone-file" accept=".zip,.rar" required onchange="updateFileName()" />
                                     </label>
                                 </div>
                                 <div class="px-10 pb-10">
