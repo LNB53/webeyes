@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   api:
     build:
@@ -7,6 +6,17 @@ services:
       dockerfile: dockerfile.api
     ports:
       - "8080:8080"
+    networks:
+      - backend
+
+  php:
+    build:
+      context: .
+      dockerfile: dockerfile.php
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mysql
     networks:
       - backend
 
