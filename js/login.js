@@ -17,9 +17,10 @@ document.getElementById('loginform').addEventListener('submit', async function (
         });
 
         if (response.ok) {
-            const userData = await response.json();
-            // Store user data in browser
-            localStorage.setItem('user', JSON.stringify(userData.user.mail));
+            const responseData = await response.json();
+            const accessToken = responseData.access_token;
+            // Store token in localStorage
+            localStorage.setItem('accessToken', accessToken);
             window.location.href = "dashboard.html"; // Redirect to dashboard
         } else {
             const errorData = await response.json();

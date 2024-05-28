@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
 from mysql.connector import Error
 import hashlib
+import jwt
+from datetime import datetime, timedelta
 
 app = FastAPI()
 
@@ -15,6 +17,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# JWT secret key (change this to a secure value)
+SECRET_KEY = "your-secret-key"
+
+# Token expiration time (change this according to your needs)
+TOKEN_EXPIRATION = timedelta(hours=1)
 
 # Form format for API handling from webpage form
 class User(BaseModel):
@@ -35,12 +43,20 @@ def get_db_connection():
         print(f"Error connecting to MySQL: {e}")
         return None
 
+# Generate JWT token
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expires_delta = timedelta(minutes=TOKEN_EXPIRATION)
+    expire = datetime.utcnow() + expires_delta
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm="HS256")
+    return encoded_jwt
+
 # Test endpoint
 @app.get("/")
 def read_root():
     return {"message": "API is running!"}
 
-# Endpoint to register a new user
 # Endpoint to register a new user
 @app.post("/register")
 def register_user(user: User):
@@ -76,9 +92,11 @@ def login_user(user: User):
             # Check if the hashed password matches the provided password
             hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
             if matched_user['password'] == hashed_password:
+                # Generate token
+                access_token = create_access_token(data={"mail": matched_user["mail"]})
                 cursor.close()
                 connection.close()
-                return {"message": "Login successful!", "user": matched_user}
+                return {"message": "Login successful!", "user": access_token}
             else:
                 raise HTTPException(status_code=401, detail="Invalid email or password")
         else:
