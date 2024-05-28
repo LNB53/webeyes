@@ -30,5 +30,16 @@ services:
     networks:
       - backend
 
+  php:
+    build:
+      context: .
+      dockerfile: dockerfile.php
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+
 networks:
   backend:
