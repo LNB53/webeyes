@@ -16,7 +16,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     }
     
     try {
-        const response = await fetch('http://api/register', {
+        const response = await fetch('/api/register', { // Ensure the path matches the Nginx proxy configuration
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
