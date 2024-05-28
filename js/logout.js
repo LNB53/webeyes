@@ -1,5 +1,5 @@
 function logout() {
-    localStorage.removeItem('user');
-    // Redirect to the login page or any other appropriate page
+    localStorage.removeItem('accestoken');
+    // Redirect to the login page
     window.location.href = "login.html";
 }
