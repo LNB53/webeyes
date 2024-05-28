@@ -14,7 +14,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         return;
     }
 
-    const response = await fetch('http://10.0.0.124:8080/register', {
+    // http://10.0.0.124:8080
+    const response = await fetch('localhost/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

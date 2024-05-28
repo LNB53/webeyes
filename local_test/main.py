@@ -22,7 +22,7 @@ app.add_middleware(
 SECRET_KEY = "your-secret-key"
 
 # Token expiration time (change this according to your needs)
-TOKEN_EXPIRATION = timedelta(hours=1)
+TOKEN_EXPIRATION = timedelta(minutes=2)
 
 # Form format for API handling from webpage form
 class User(BaseModel):
@@ -63,7 +63,6 @@ def register_user(user: User):
     connection = get_db_connection()
     if connection is None:
         raise HTTPException(status_code=500, detail="Failed to connect to the database")
-
     try:
         hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
         cursor = connection.cursor()

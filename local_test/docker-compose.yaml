@@ -1,5 +1,24 @@
 version: '3'
+
 services:
+  nginx:
+    build:
+      context: .
+      dockerfile: dockerfile.nginx
+    ports:
+      - "80:80"
+    networks:
+      - backend
+
+  mysql:
+    build:
+      context: .
+      dockerfile: dockerfile.sql
+    ports:
+      - "3307:3306"
+    networks:
+      - backend
+
   api:
     build:
       context: .
@@ -17,6 +36,6 @@ services:
       - "9000:9000"
     networks:
       - backend
-
+      
 networks:
   backend:
