@@ -35,25 +35,22 @@ def get_db_connection():
         print(f"Error connecting to MySQL: {e}")
         return None
 
-# Helper function to hash passwords
-def hash_password(password: str) -> str:
-    return hashlib.sha512(password.encode()).hexdigest()
-
 # Test endpoint
 @app.get("/")
 def read_root():
     return {"message": "API is running!"}
 
 # Endpoint to register a new user
+# Endpoint to register a new user
 @app.post("/register")
 def register_user(user: User):
     connection = get_db_connection()
     if connection is None:
         raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
     try:
+        hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
         cursor = connection.cursor()
-        # Hash the password before storing it in the database
-        hashed_password = hash_password(user.password)
         cursor.execute("INSERT INTO users (mail, password) VALUES (%s, %s)", (user.mail, hashed_password))
         connection.commit()
         cursor.close()
@@ -69,7 +66,6 @@ def login_user(user: User):
     connection = get_db_connection()
     if connection is None:
         raise HTTPException(status_code=500, detail="Failed to connect to the database")
-
     try:
         cursor = connection.cursor(dictionary=True)
         # Fetch user by email from the database
@@ -77,8 +73,8 @@ def login_user(user: User):
         matched_user = cursor.fetchone()
 
         if matched_user:
-            # Hash the provided password and compare it to the stored hashed password
-            hashed_password = hash_password(user.password)
+            # Check if the hashed password matches the provided password
+            hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
             if matched_user['password'] == hashed_password:
                 cursor.close()
                 connection.close()
