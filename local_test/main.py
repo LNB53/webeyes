@@ -46,8 +46,7 @@ def get_db_connection():
 # Generate JWT token
 def create_access_token(data: dict):
     to_encode = data.copy()
-    expires_delta = timedelta(minutes=TOKEN_EXPIRATION)
-    expire = datetime.utcnow() + expires_delta
+    expire = datetime.utcnow() + TOKEN_EXPIRATION
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm="HS256")
     return encoded_jwt

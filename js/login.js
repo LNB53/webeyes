@@ -15,7 +15,7 @@ document.getElementById('loginform').addEventListener('submit', async function (
 
         if (response.ok) {
             const responseData = await response.json();
-            const accessToken = responseData.access_token;
+            const accessToken = responseData.user; // Adjusted to match the Python code
             // Store token in localStorage
             localStorage.setItem('accessToken', accessToken);
             window.location.href = "dashboard.html"; // Redirect to dashboard
