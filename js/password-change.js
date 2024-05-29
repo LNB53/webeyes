@@ -26,7 +26,9 @@ document.getElementById('password-change-form').addEventListener('submit', async
             const responseData = await response.json();
             alert(responseData.message); // Display success message
             // Redirect the user to the home page or any other appropriate page
-            window.location.href = "index.html";
+            window.location.href = "login.html";
+            // Remove items from localStorage
+            localStorage.clear();
         } else {
             const errorData = await response.json();
             alert(`Error: ${errorData.detail}`);
