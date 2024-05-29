@@ -1,5 +1,7 @@
-function logout() {
-    localStorage.removeItem('accesToken');
-    // Redirect to the login page
+document.getElementById('logoutButton').addEventListener('click', function() {
+    // Remove items from localStorage
+    localStorage.clear();
+
+    // Redirect to login page
     window.location.href = "login.html";
-}
+});
