@@ -28,7 +28,10 @@ TOKEN_EXPIRATION = timedelta(minutes=30)
 class User(BaseModel):
     mail: str
     password: str
-
+class PasswordChange(BaseModel):
+    old_password: str
+    new_password: str
+    
 # Database connection
 def get_db_connection():
     try:
