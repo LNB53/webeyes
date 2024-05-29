@@ -1,4 +1,3 @@
-// Add an event listener to the Delete Account button
 document.getElementById('yeetus-deletus-btn').addEventListener('click', async function(event) {
     event.preventDefault();
 
@@ -6,9 +5,12 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
     const confirmDelete = confirm("Are you sure you want to delete your account? This action cannot be undone.");
 
     if (confirmDelete) {
-        // Get user credentials
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        // Retrieve JWT token from local storage
+        const accessToken = localStorage.getItem('accessToken');
+        
+        // Decode the JWT to extract the user's email
+        const decodedToken = parseJwt(accessToken);
+        const email = decodedToken.mail;
 
         try {
             // Send a request to delete the account
@@ -17,7 +19,7 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({mail: email, password: password})
+                body: JSON.stringify({mail: email})
             });
 
             if (response.ok) {
@@ -35,3 +37,12 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
         }
     }
 });
+
+// Function to decode JWT token
+function parseJwt(token) {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        return null;
+    }
+}
