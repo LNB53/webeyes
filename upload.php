@@ -40,6 +40,7 @@ if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"
     $file_name = $appname . '.' . $file_extension;
 
     if (!ftp_put($conn_id, $file_name, $file_tmp, FTP_BINARY)) {
+        ftp_close($conn_id); // Close FTP connection
         die("Failed to upload file to FTP server");
     }
     echo "Uploaded file to FTP server successfully.\n"; // Debug statement
@@ -47,6 +48,19 @@ if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"
     // Close FTP connection
     ftp_close($conn_id);
     echo "Closed FTP connection.\n"; // Debug statement
+
+    // Execute Python script
+    $python_script = "/py/upload.py";
+    $command = "python3 $python_script {$_FILES['dropzone-file']['name']}";
+    exec($command, $output, $return_var);
+    
+    // Print the value of return_var
+    echo "Return value of Python script: $return_var\n";
+
+    // Check if Python script executed successfully
+    if ($return_var !== 0) {
+        die("Error executing Python script");
+    }
 
     // Redirect back to the form with success parameter
     header("Location: dashboard.html?s=T");
