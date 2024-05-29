@@ -9,8 +9,12 @@ COPY . /usr/src/app
 
 # Install any needed dependencies
 RUN apt-get update && apt-get install -y \
-    ftp \
+    python3 \
+    python3-pip \
  && rm -rf /var/lib/apt/lists/*
+
+# Install pyVmomi using pip
+RUN pip3 install pyVmomi
 
 # Make port 80 available to the world outside this container
 EXPOSE 80

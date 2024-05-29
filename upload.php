@@ -4,7 +4,7 @@ $ftp_server = "10.0.0.204"; // FTP server IP address
 $ftp_username = "ftpserver"; // FTP username
 $ftp_password = "ITF"; // FTP password
 $ftp_dir = "/home/ftpserver/userfiles"; // Directory on FTP server to upload files
-
+putenv('PYTHONPATH=/home/webserver/.local/lib/python3.10/site-packages');
 // Check if file has been uploaded and appname is set
 if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"])) {
     $appname = $_POST["appname"];
@@ -50,9 +50,11 @@ if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"
     echo "Closed FTP connection.\n"; // Debug statement
 
     // Execute Python script
-    $python_script = "/py/upload.py";
-    $command = "python3 $python_script {$_FILES['dropzone-file']['name']}";
+    $python_script = "py/upload.py";
+    $command = "/usr/bin/python3 $python_script $file_name 2>&1";
+    echo "$command";
     exec($command, $output, $return_var);
+    print_r($output);
     
     // Print the value of return_var
     echo "Return value of Python script: $return_var\n";
