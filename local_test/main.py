@@ -22,7 +22,7 @@ app.add_middleware(
 SECRET_KEY = "your-secret-key"
 
 # Token expiration time (change this according to your needs)
-TOKEN_EXPIRATION = timedelta(minutes=2)
+TOKEN_EXPIRATION = timedelta(minutes=30)
 
 # Form format for API handling from webpage form
 class User(BaseModel):
