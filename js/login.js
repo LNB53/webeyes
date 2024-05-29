@@ -10,10 +10,7 @@ document.getElementById('loginform').addEventListener('submit', async function (
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                mail: email,
-                password: password
-            })
+            body: JSON.stringify({mail: email, password: password})
         });
 
         if (response.ok) {
