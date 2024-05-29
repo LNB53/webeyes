@@ -13,7 +13,7 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
 
         try {
             // Send a request to delete the account
-            const response = await fetch('http://127.0.0.1:8080/yeetus-deletus', {
+            const response = await fetch('http://10.0.0.124:8080/yeetus-deletus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

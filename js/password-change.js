@@ -10,7 +10,7 @@ document.getElementById('password-change-form').addEventListener('submit', async
 
     try {
         // Send a request to change the password
-        const response = await fetch('http://127.0.0.1:8080/change-password', {
+        const response = await fetch('http://10.0.0.124:8080/change-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

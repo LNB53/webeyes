@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-  nginx:
-    build:
-      context: .
-      dockerfile: dockerfile.nginx
-    ports:
-      - "80:80"
-    networks:
-      - backend
-
   api:
     build:
       context: .

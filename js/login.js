@@ -5,7 +5,7 @@ document.getElementById('loginform').addEventListener('submit', async function (
     const password = document.getElementById('password').value;
     
     // http://10.0.0.124 http://127.0.0.1
-    const response = await fetch('http://127.0.0.1:8080/login', {
+    const response = await fetch('http://10.0.0.124:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
