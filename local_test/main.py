@@ -102,3 +102,31 @@ def login_user(user: User):
     except Error as e:
         print(f"Error during login: {e}")
         raise HTTPException(status_code=500, detail="Error during login")
+
+# Endpoint to handle account deletion
+@app.post("/yeetus-deletus")
+def delete_account(user: User):
+    connection = get_db_connection()
+    if connection is None:
+        raise HTTPException(status_code=500, detail="Failed to connect to the database")
+    try:
+        cursor = connection.cursor()
+        # Check if the user exists and if the password matches
+        cursor.execute("SELECT * FROM users WHERE mail = %s", (user.mail,))
+        matched_user = cursor.fetchone()
+        if matched_user:
+            hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
+            if matched_user['password'] == hashed_password:
+                # Delete the user from the database
+                cursor.execute("DELETE FROM users WHERE mail = %s", (user.mail,))
+                connection.commit()
+                cursor.close()
+                connection.close()
+                return {"message": "Account deleted successfully"}
+            else:
+                raise HTTPException(status_code=401, detail="Invalid email or password")
+        else:
+            raise HTTPException(status_code=401, detail="Invalid email or password")
+    except Error as e:
+        print(f"Error during account deletion: {e}")
+        raise HTTPException(status_code=500, detail="Error during account deletion")
