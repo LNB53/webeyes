@@ -105,28 +105,33 @@ def login_user(user: User):
 
 # Endpoint to handle account deletion
 @app.post("/yeetus-deletus")
-def delete_account(user: User):
+def delete_account(email: str = Depends(get_email_from_token)):
+    if not email:
+        raise HTTPException(status_code=422, detail="Email cannot be empty")
     connection = get_db_connection()
     if connection is None:
         raise HTTPException(status_code=500, detail="Failed to connect to the database")
     try:
         cursor = connection.cursor()
-        # Check if the user exists and if the password matches
-        cursor.execute("SELECT * FROM users WHERE mail = %s", (user.mail,))
+        cursor.execute("SELECT * FROM users WHERE mail = %s", (email,))
         matched_user = cursor.fetchone()
         if matched_user:
-            hashed_password = hashlib.sha512(user.password.encode()).hexdigest()
-            if matched_user['password'] == hashed_password:
-                # Delete the user from the database
-                cursor.execute("DELETE FROM users WHERE mail = %s", (user.mail,))
-                connection.commit()
-                cursor.close()
-                connection.close()
-                return {"message": "Account deleted successfully"}
-            else:
-                raise HTTPException(status_code=401, detail="Invalid email or password")
+            # No need to check the password since we're relying on JWT authentication
+            cursor.execute("DELETE FROM users WHERE mail = %s", (email,))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            return {"message": "Account deleted successfully"}
         else:
-            raise HTTPException(status_code=401, detail="Invalid email or password")
+            raise HTTPException(status_code=401, detail="Invalid email")
     except Error as e:
         print(f"Error during account deletion: {e}")
         raise HTTPException(status_code=500, detail="Error during account deletion")
+
+# Function to extract email from JWT token
+def get_email_from_token(token: str = Depends(get_token_from_header)):
+    try:
+        decoded_token = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        return decoded_token.get("mail")
+    except jwt.JWTError as e:
+        raise HTTPException(status_code=401, detail="Invalid token")

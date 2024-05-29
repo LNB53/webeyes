@@ -5,27 +5,20 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
     const confirmDelete = confirm("Are you sure you want to delete your account? This action cannot be undone.");
 
     if (confirmDelete) {
-        // Retrieve JWT token from local storage
-        const accessToken = localStorage.getItem('accessToken');
-        
-        // Decode the JWT to extract the user's email
-        const decodedToken = parseJwt(accessToken);
-        const email = decodedToken.mail;
-
         try {
             // Send a request to delete the account
             const response = await fetch('http://127.0.0.1:8080/yeetus-deletus', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({mail: email})
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}` // Send the JWT token in the Authorization header
+                }
             });
 
             if (response.ok) {
                 const responseData = await response.json();
                 alert(responseData.message); // Display success message
-                // Redirect the user to the login page or home page
+                // Redirect the user to the home page
                 window.location.href = "index.html";
             } else {
                 const errorData = await response.json();
@@ -37,12 +30,3 @@ document.getElementById('yeetus-deletus-btn').addEventListener('click', async fu
         }
     }
 });
-
-// Function to decode JWT token
-function parseJwt(token) {
-    try {
-        return JSON.parse(atob(token.split('.')[1]));
-    } catch (e) {
-        return null;
-    }
-}
