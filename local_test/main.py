@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Header
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import mysql.connector
@@ -105,33 +105,78 @@ def login_user(user: User):
 
 # Endpoint to handle account deletion
 @app.post("/yeetus-deletus")
-def delete_account(email: str = Depends(get_email_from_token)):
-    if not email:
-        raise HTTPException(status_code=422, detail="Email cannot be empty")
-    connection = get_db_connection()
-    if connection is None:
-        raise HTTPException(status_code=500, detail="Failed to connect to the database")
+def delete_account(email: str = Header(..., alias="Authorization")):
     try:
+        # Decode JWT token to get user email
+        token = email.split(" ")[1]  # Assuming the token is sent as "Bearer <token>"
+        decoded_token = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        user_email = decoded_token.get("mail")
+
+        # Check if the email exists
+        if not user_email:
+            raise HTTPException(status_code=401, detail="Invalid token")
+
+        # Delete the user's account from the database
+        connection = get_db_connection()
+        if connection is None:
+            raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM users WHERE mail = %s", (email,))
-        matched_user = cursor.fetchone()
-        if matched_user:
-            # No need to check the password since we're relying on JWT authentication
-            cursor.execute("DELETE FROM users WHERE mail = %s", (email,))
-            connection.commit()
-            cursor.close()
-            connection.close()
-            return {"message": "Account deleted successfully"}
-        else:
-            raise HTTPException(status_code=401, detail="Invalid email")
+        cursor.execute("DELETE FROM users WHERE mail = %s", (user_email,))
+        connection.commit()
+        cursor.close()
+        connection.close()
+
+        return {"message": "Account deleted successfully"}
+
+    except jwt.JWTError as e:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
     except Error as e:
         print(f"Error during account deletion: {e}")
         raise HTTPException(status_code=500, detail="Error during account deletion")
-
-# Function to extract email from JWT token
-def get_email_from_token(token: str = Depends(get_token_from_header)):
+    
+# Endpoint to handle password change
+@app.post("/change-password")
+def change_password(password_change: PasswordChange, email: str = Header(..., alias="Authorization")):
     try:
+        # Decode JWT token to get user email
+        token = email.split(" ")[1]  # Assuming the token is sent as "Bearer <token>"
         decoded_token = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-        return decoded_token.get("mail")
+        user_email = decoded_token.get("mail")
+
+        # Check if the email exists
+        if not user_email:
+            raise HTTPException(status_code=401, detail="Invalid token")
+
+        # Verify if the old password matches
+        connection = get_db_connection()
+        if connection is None:
+            raise HTTPException(status_code=500, detail="Failed to connect to the database")
+
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM users WHERE mail = %s", (user_email,))
+        matched_user = cursor.fetchone()
+
+        if not matched_user:
+            raise HTTPException(status_code=401, detail="User not found")
+
+        hashed_old_password = hashlib.sha512(password_change.old_password.encode()).hexdigest()
+        if matched_user['password'] != hashed_old_password:
+            raise HTTPException(status_code=401, detail="Incorrect old password")
+
+        # Update the user's password in the database
+        hashed_new_password = hashlib.sha512(password_change.new_password.encode()).hexdigest()
+        cursor.execute("UPDATE users SET password = %s WHERE mail = %s", (hashed_new_password, user_email))
+        connection.commit()
+        cursor.close()
+        connection.close()
+
+        return {"message": "Password changed successfully"}
+
     except jwt.JWTError as e:
         raise HTTPException(status_code=401, detail="Invalid token")
+
+    except Error as e:
+        print(f"Error during password change: {e}")
+        raise HTTPException(status_code=500, detail="Error during password change")
