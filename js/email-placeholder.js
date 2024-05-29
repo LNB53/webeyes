@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get the JWT token from localStorage
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
 
     if (token) {
         try {
