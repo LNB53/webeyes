@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/eb20186e5c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>WebEyes - Applications</title>
 </head>
 
@@ -89,41 +90,7 @@
                                                 |
                                             </div>
                                         </td>
-                                        <td class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                <div class="p-1 rounded inline-block mr-2 bg-red-700">Stopped</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center space-x-4">
-                                                <button type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
-                                                    <i class="fa-solid fa-rotate-right"></i>
-                                                </button>
-                                                <a href="monitoring.html">
-                                                    <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
-                                                        <i class="fa-solid fa-gear"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <th scope="row" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                Application 2
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <td id="status1" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             <div class="flex items-center">
                                                 <div class="p-1 rounded inline-block mr-2 bg-yellow-400">Starting</div>
                                             </div>
@@ -135,75 +102,16 @@
                                         </td>
                                         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             <div class="flex items-center space-x-4">
-                                                <button type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
-                                                    <i class="fa-solid fa-rotate-right"></i>
+                                                <button id="openIpButton" type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
+                                                    <i class="fa-solid fa-sitemap"></i>
                                                 </button>
-                                                <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
-                                                    <i class="fa-solid fa-gear"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <th scope="row" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                Application 3
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                <div class="p-1 rounded inline-block mr-2 bg-orange-500">Restarting</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center space-x-4">
-                                                <button type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
-                                                    <i class="fa-solid fa-rotate-right"></i>
-                                                </button>
-                                                <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
-                                                    <i class="fa-solid fa-gear"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <th scope="row" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                Application 4
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center">
-                                                <div class="p-1 rounded inline-block mr-2 bg-green-700">Running</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                |
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center space-x-4">
-                                                <button type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
-                                                    <i class="fa-solid fa-rotate-right"></i>
-                                                </button>
-                                                <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
-                                                    <i class="fa-solid fa-gear"></i>
+                                                <a href="http://10.0.0.126">
+                                                    <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
+                                                        <i class="fa-solid fa-gear"></i>
+                                                    </button>
+                                                </a>
+                                                <button id="removeButton" type="button" class="p-2 flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                                    <i class="fa-solid fa-trash-can"></i>
                                                 </button>
                                             </div>
                                         </td>
@@ -229,7 +137,7 @@
                                     <input type="text" id="appname" name="appname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Name of application" required pattern="[a-z0-9]+" title="Lowercase letters and numbers only, no spaces." required>
                                 </div>
                                 <div class="p-10 flex items-center justify-center w-full">
-                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                    <label for="dropzone-file" id="dropzone" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                             <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
@@ -269,6 +177,8 @@
     <script src="js/upload.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/authentication.js"></script>
+    <script src="js/statuscheck.js"></script>
+    <script src="js/delete.js"></script>
 </body>
 
 </html>

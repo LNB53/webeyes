@@ -39,6 +39,36 @@ document.addEventListener('DOMContentLoaded', function() {
             window.history.replaceState({}, '', newUrl);
         }, 2500);
     }
+
+    // Drag-and-drop functionality
+    const dropZone = document.getElementById('dropzone-file').parentElement;
+
+    dropZone.addEventListener('dragenter', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('bg-gray-200');
+    });
+
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('bg-gray-200');
+    });
+
+    dropZone.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('bg-gray-200');
+    });
+
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('bg-gray-200');
+        const files = e.dataTransfer.files;
+        document.getElementById('dropzone-file').files = files;
+        updateFileName();
+    });
 });
 
 function validateFileType() {
