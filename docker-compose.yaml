@@ -1,0 +1,64 @@
+# version: '3'
+services:
+  app:
+    image: brentw53/webeyes-app:latest
+    env_file:
+      - .env
+    working_dir: /var/www
+    volumes:
+      - /var/www
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+      - "DB_DATABASE=${DB_DATABASE}"
+      - "DB_USERNAME=${DB_USERNAME}"
+      - "DB_PASSWORD=${DB_PASSWORD}"
+    depends_on:
+      - database
+    networks:
+      - front
+      - back
+
+  web:
+    image: brentw53/webeyes-web:latest
+    working_dir: /var/www
+    volumes_from:
+      - app
+    ports:
+      - 8081:80
+    depends_on:
+      - app
+    networks:
+      - front
+
+  database:
+    # image: mysql:5.6
+    image: mysql:8.4
+    env_file:
+      - .env
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "DB_DATABASE=${MYSQL_DATABASE}"
+      - "DB_USERNAME=${MYSQL_USER}"
+      - "DB_PASSWORD=${MYSQL_PASSWORD}"
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=true"
+      # - "MYSQL_RANDOM_ROOT_PASSWORD=true"
+    ports:
+        - "33061:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - back
+
+volumes:
+  dbdata:
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
