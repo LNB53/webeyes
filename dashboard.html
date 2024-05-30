@@ -13,7 +13,7 @@
     <title>WebEyes - Applications</title>
 </head>
 
-<body>
+<body class="bg-gray-900">
     <header>
         <nav class="bg-[#000000]">
             <div class="flex flex-wrap items-center justify-between mx-auto p-4">
@@ -43,7 +43,7 @@
     <div class="grid grid-cols-6">
         <article class="col-start-1 col-end-1">
             <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
-                <div class="overflow-y-auto py-5 px-3 h-[625px] bg-[#000000]">
+                <div class="overflow-y-auto py-5 px-3 height bg-[#000000]">
                     <ul class="space-y-2">
                         <li>
                             <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white
@@ -70,12 +70,12 @@
             </aside>
         </article>
         <article class="col-start-2 col-end-4">
-            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased height">
                 <div class="px-4 lg:px-12">
                     <div class="pb-4 text-white text-center">
                         <h1>Click and application to monitor!</h1>
                     </div>
-                    <div class="h-[545px] bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
+                    <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
                         <div class="flex flex-col justify-center">
                             <table class="text-sm text-left text-gray-500 dark:text-gray-400">
                                 <tbody>
@@ -127,10 +127,10 @@
             </section>
         </article>
         <article class="border-l-2 border-white bg-gray-900 col-start-4 col-end-7">
-            <section>
+            <section class="height">
                 <form id="upload-form" method="post" enctype="multipart/form-data" action="upload.php" onsubmit="return validateFileType()">
                     <div class="pt-14 px-4 lg:px-12">
-                        <div class="h-[545px] bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
+                        <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
                             <div class="flex flex-col justify-center">
                                 <div class="px-10 pt-10">
                                     <label for="appname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Application name:</label>
