@@ -12,7 +12,7 @@
     <title>WebEyes - Monitoring</title>
 </head>
 
-<body class="h-screen">
+<body class="bg-gray-900">
     <header>
         <nav class="bg-[#000000]">
             <div class="flex flex-wrap items-center justify-between mx-auto p-4">
@@ -37,10 +37,10 @@
             </div>
         </nav>
     </header>
-    <div class="grid grid-cols-6 height">
+    <div class="grid grid-cols-6">
         <article class="col-start-1 col-end-1">
             <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
-                <div class="overflow-y-auto py-5 px-3 bg-[#000000]">
+                <div class="overflow-y-auto py-5 px-3 height bg-[#000000]">
                     <ul class="space-y-2">
                         <li>
                             <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -66,7 +66,7 @@
             </aside>
         </article>
         <article class="col-start-2 col-end-4">
-            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased height">
                 <div class="px-4 lg:px-12">
                     <div>
                         <img class="max-h-64" src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
@@ -78,8 +78,8 @@
             </section>
         </article>
         <article class="col-start-4 col-end-7">
-            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
-                <div class="py-10 height">
+            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased height">
+                <div class="py-10">
                     <div>
                         <img class="max-h-64" src="https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png" alt="">
                     </div>
@@ -91,7 +91,6 @@
         </article>
     <script src="js/authentication.js"></script>
     <script src="js/logout.js"></script>
-    <script src="js/graphs.js"></script>
 </body>
 
 </html>
