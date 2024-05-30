@@ -62,6 +62,25 @@ if ($_FILES["dropzone-file"]["error"] == UPLOAD_ERR_OK && isset($_POST["appname"
         die("Error executing Python script");
     }
 
+    // Execute check.sh script with a 20-second timeout
+    $ssh_host = '10.0.0.40';
+    $ssh_user = 'user';
+    $check_script_command = "/home/user/check.sh";
+    $timeout = 20; // 20 seconds timeout
+    $ssh_command = "timeout $timeout ssh -o StrictHostKeyChecking=no -i /var/www/.ssh/id_rsa $ssh_user@$ssh_host \"$check_script_command\" 2>&1";
+
+    // Execute SSH command and capture output
+    $ssh_output = shell_exec($ssh_command);
+
+    // Log the SSH command and its output for debugging purposes
+    file_put_contents('/var/www/ssh_command.log', $ssh_command . PHP_EOL, FILE_APPEND);
+    file_put_contents('/var/www/ssh_output.log', $ssh_output . PHP_EOL, FILE_APPEND);
+
+    // Check if there's any output on stderr
+    if (strpos($ssh_output, 'sudo: ') !== false) {
+        die("Error executing check.sh script");
+    }
+
     // Redirect back to the form with success parameter
     header("Location: dashboard.html?s=T");
     exit;

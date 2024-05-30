@@ -9,8 +9,8 @@ $(document).ready(function() {
             type: 'POST',
             success: function(response) {
                 // Handle success response
-                console.log('Script executed successfully:', response);
-                alert('Script executed successfully!');
+                console.log('Application stopped successfully:', response);
+                alert('Application stopped successfully!');
             },
             error: function(xhr, status, error) {
                 // Handle error response
