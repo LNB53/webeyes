@@ -1,0 +1,6 @@
+# requirements.txt
+fastapi
+uvicorn
+python-dotenv
+mysql-connector-python
+PyJWT

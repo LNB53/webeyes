@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: dockerfile.nginx
+    ports:
+      - "80:80"
+    networks:
+      - backend
+
+  api:
+    build:
+      context: .
+      dockerfile: dockerfile.api
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  php:
+    build:
+      context: .
+      dockerfile: dockerfile.php
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+networks:
+  backend:

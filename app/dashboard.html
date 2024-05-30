@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/eb20186e5c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>WebEyes - Applications</title>
+</head>
+
+<body class="bg-gray-900">
+    <header>
+        <nav class="bg-[#000000]">
+            <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img class="max-h-14" src="./images/webeyes.png" alt="Webeyes Logo" />
+                </a>
+                <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm 
+                text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400
+                dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+                    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black bg-[#000000] dark:border-gray-700">
+                        <li>
+                            <button type="button" onclick="logout()" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br
+                            focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg
+                            dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-1.5 text-center">Log Out</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="grid grid-cols-6">
+        <article class="col-start-1 col-end-1">
+            <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-auto transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
+                <div class="overflow-y-auto py-5 px-3 height bg-[#000000]">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="dashboard.html" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white
+                            hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <i class="fa-brands fa-docker"></i>
+                                <span class="ml-3">Applications</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account.html">
+                                <button type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Account</span>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
+                    <a href="contact.html" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <h1><i class="fa-solid fa-ticket"></i> Contact</h1>
+                    </a>
+                </div>
+            </aside>
+        </article>
+        <article class="col-start-2 col-end-4">
+            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased height">
+                <div class="px-4 lg:px-12">
+                    <div class="pb-4 text-white text-center">
+                        <h1>Click and application to monitor!</h1>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
+                        <div class="flex flex-col justify-center">
+                            <table class="text-sm text-left text-gray-500 dark:text-gray-400">
+                                <tbody>
+                                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <th scope="row" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <div class="flex items-center">
+                                                Application 1
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div>
+                                                |
+                                            </div>
+                                        </td>
+                                        <td id="status1" class="pl-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <div class="flex items-center">
+                                                <div class="p-1 rounded inline-block mr-2 bg-yellow-400">Starting</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                |
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <div class="flex items-center space-x-4">
+                                                <button id="openIpButton" type="button" class="p-2 flex items-center text-white-700 hover:text-white border border-white-700 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-full text-sm text-center dark:border-white-500 dark:text-white-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-white-900">
+                                                    <i class="fa-solid fa-sitemap"></i>
+                                                </button>
+                                                <a href="http://10.0.0.126">
+                                                    <button type="button" class="p-2 flex items-center text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-900">
+                                                        <i class="fa-solid fa-gear"></i>
+                                                    </button>
+                                                </a>
+                                                <button id="removeButton" type="button" class="p-2 flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="flex justify-center pt-5">
+                                <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-full text-sm py-2.5 px-4 text-center">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+        <article class="border-l-2 border-white bg-gray-900 col-start-4 col-end-7">
+            <section class="height">
+                <form id="upload-form" method="post" enctype="multipart/form-data" action="upload.php" onsubmit="return validateFileType()">
+                    <div class="pt-14 px-4 lg:px-12">
+                        <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg overflow-hidden">
+                            <div class="flex flex-col justify-center">
+                                <div class="px-10 pt-10">
+                                    <label for="appname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Application name:</label>
+                                    <input type="text" id="appname" name="appname" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Name of application" required pattern="[a-z0-9]+" title="Lowercase letters and numbers only, no spaces." required>
+                                </div>
+                                <div class="p-10 flex items-center justify-center w-full">
+                                    <label for="dropzone-file" id="dropzone" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                            </svg>
+                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">ONLY .zip or .rar</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 pb-3">Max upload size 150MB</p>
+                                            <div id="upload-success-message" class="hidden bg-green-200 text-green-800 p-2 mt-4 rounded-md">File uploaded successfully!</div>
+                                            <div role="status" id="upload-spinner" class="hidden pb-4">
+                                                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                                </svg>
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                            <div class="px-10 pb-4">
+                                                <div id="file-name-container" class="flex items-center space-x-2 text-sm text-gray-500 dark:text-white">
+                                                    <p id="file-name"></p>
+                                                    <button type="button" id="remove-file-btn" class="hidden text-red-500" onclick="removeFile()">x</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input class="hidden" type="file" id="dropzone-file" name="dropzone-file" accept=".zip,.rar" required onchange="updateFileName()" />
+                                    </label>
+                                </div>
+                                <div class="px-10 pb-10">
+                                    <button type="submit" class="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create application</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/authentication.js"></script>
+    <script src="js/statuscheck.js"></script>
+    <script src="js/delete.js"></script>
+</body>
+
+</html>

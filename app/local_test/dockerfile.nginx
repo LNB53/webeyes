@@ -1,0 +1,24 @@
+# dockerfile.nginx
+FROM nginx:latest
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Remove default nginx welcome page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Clone the webpage files from GitHub
+WORKDIR /tmp
+RUN git clone https://github.com/QuintenVdW/Project_hosting.git
+
+# Move files to nginx directory
+RUN mv /tmp/Project_hosting/* /usr/share/nginx/html
+
+# Clean up
+RUN rm -rf /tmp/Project_hosting
+
+# Expose ports
+EXPOSE 80
+
+# Start services
+CMD ["nginx", "-g", "daemon off;"]
